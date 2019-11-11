@@ -24,7 +24,7 @@ dependencies {
 }
 ```
 ### Manually
-If you prefer not to use Cocoapods dependency manager, you can integrate Connatix Player SDK into your project manually.
+If you prefer not to use Maven dependency manager, you can integrate Connatix Player SDK into your project manually.
 ## Using the SDK
 ```kotlin
 //New player instance
