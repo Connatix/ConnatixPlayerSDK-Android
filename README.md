@@ -12,7 +12,7 @@ allprojects {
          
         // Path to Maven repo
         maven{
-            url "https://dl.bintray.com/Connatix"
+            url "https://dl.bintray.com/connatix/ConnatixPlayer"
         }
     }
 }
@@ -20,7 +20,7 @@ allprojects {
 To finish, in the app's `build.gradle` file, add the SDK as a dependency:
 ```ruby
 dependencies {
-    implementation 'com.connatix.sdk:connatixplayersdk:0.0.2'
+    implementation 'com.connatix.sdk:connatixplayersdk:1.0.9'
 }
 ```
 ### Manually
