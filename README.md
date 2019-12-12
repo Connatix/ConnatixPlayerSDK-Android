@@ -28,8 +28,8 @@ If you prefer not to use Maven dependency manager, you can integrate Connatix Pl
 ## Using the SDK
 ```kotlin
 //New player instance
-var connatixPlayer = ConnatixPlayerSDK(context:this, attrs:null, defStyleAttr:0, delegate:this)
-
+var connatixPlayer = ConnatixPlayerSDK(context:this, attrs:null, defStyleAttr:0, privacySharedPreferencesName: "appsPrivacySettingsPrefs" delegate:this)
+// privacySharedPreferencesName is the name of the SharedPreferences where you store CCPA info
 //Insert player as a subview
 var params : LinearLayout.LayoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
