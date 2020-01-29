@@ -20,33 +20,55 @@ allprojects {
 To finish, in the app's `build.gradle` file, add the SDK as a dependency:
 ```ruby
 dependencies {
-    implementation 'com.connatix.sdk:connatixplayersdk:1.0.9'
+    implementation 'com.connatix.sdk:connatixplayersdk:1.1.5'
 }
 ```
 ### Manually
 If you prefer not to use Maven dependency manager, you can integrate Connatix Player SDK into your project manually.
 ## Using the SDK
+### Elements
 ```kotlin
 //New player instance
-var connatixPlayer = ConnatixPlayerSDK(context:this, attrs:null, defStyleAttr:0, privacySharedPreferencesName: "appsPrivacySettingsPrefs" delegate:this)
+var elementsPlayer = ElementsPlayer(this, null, 0,this)
 // privacySharedPreferencesName is the name of the SharedPreferences where you store CCPA info
 //Insert player as a subview
 var params : LinearLayout.LayoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT)
-connatixPlayer.layoutParams = params
-sdkContainerView.addView(connatixPlayer)
+elementsPlayer.layoutParams = params
+sdkContainerView.addView(elementsPlayer)
  
 //Config object example
 val appSettings = AppSettings("https://example.com","https://examplestore.com/app", listOf("health", "finance"),true,false)
-val playerConfig = PlayerConfig("cd6bde64-da62-4f4d-bb78-79ec535f1727", appSettings)
+val playerConfig = ElementsConfig("e9009be9-c5db-4ac0-b00a-119c159bbff5", appSettings)
  
 //Player setup
-connatixPlayer.setupPlayer(playerType: PlayerType.Elements, config: playerConfig)
+elementsPlayer.setupPlayer(config: playerConfig)
 
 //Listen for events
-connatixPlayer?.listenFor(EventType.volumeChanged,true)
+elementsPlayer?.listenFor(EventType.volumeChanged,true)
+```
+### Playspace
+```kotlin
+//New player instance
+var playspacePlayer = PlayspacePlayer(this, null, 0, this)
+// privacySharedPreferencesName is the name of the SharedPreferences where you store CCPA info
+//Insert player as a subview
+var params : LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT)
+playspacePlayer.layoutParams = params
+sdkContainerView.addView(playspacePlayer)
+ 
+//Config object example
+val appSettings = AppSettings("https://example.com","https://examplestore.com/app", listOf("health", "finance"),true,false)
+val playerConfig = PlayspaceConfig("3d097366-2276-4c4b-b564-3cbd9b6c30cd", "5bd62672-d010-47f0-bab2-145b331085c6", appSettings)
+ 
+//Player setup
+playspacePlayer.setupPlayer(config: playerConfig)
 
+//Listen for events
+playspacePlayer?.listenFor(EventType.changeSlide,true)
 ```
 ## Requirements
 * minSdkVersion 19
